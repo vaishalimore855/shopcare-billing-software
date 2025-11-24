@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Smartphone, Download, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/common/button";
 
 export default function AppScreenshots() {
   const [mounted, setMounted] = React.useState(false);
@@ -43,7 +43,8 @@ export default function AppScreenshots() {
             </span>
           </h2>
           <p className="text-xl text-slate-600">
-            A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradise
+            A small river named Duden flows by their place and supplies it with
+            the necessary regelialia. It is a paradise
           </p>
         </motion.div>
 
@@ -107,8 +108,9 @@ export default function AppScreenshots() {
             </div>
 
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              A small river named Duden flows by their place and supplies it with the necessary regelialia. 
-              It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+              A small river named Duden flows by their place and supplies it
+              with the necessary regelialia. It is a paradisematic country, in
+              which roasted parts of sentences fly into your mouth.
             </p>
 
             {/* App Ratings */}
@@ -116,10 +118,16 @@ export default function AppScreenshots() {
               <div>
                 <div className="flex items-center space-x-1 mb-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400"
+                      fill="currentColor"
+                    />
                   ))}
                 </div>
-                <p className="text-sm text-slate-600">4.8 Rating on App Store</p>
+                <p className="text-sm text-slate-600">
+                  4.8 Rating on App Store
+                </p>
               </div>
               <div className="h-12 w-px bg-slate-300" />
               <div>
@@ -134,7 +142,9 @@ export default function AppScreenshots() {
                 <Button className="w-full md:w-auto h-16 px-8 bg-black hover:bg-slate-800 text-white rounded-2xl flex items-center justify-start space-x-4 shadow-xl">
                   {/* App Store Icon */}
                   <div className="text-left">
-                    <div className="text-xs text-slate-300">Download on the</div>
+                    <div className="text-xs text-slate-300">
+                      Download on the
+                    </div>
                     <div className="text-lg font-semibold">App Store</div>
                   </div>
                 </Button>
@@ -161,9 +171,12 @@ export default function AppScreenshots() {
               <div className="flex items-start space-x-4">
                 <Download className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-slate-800 mb-2">Available on all platforms</h4>
+                  <h4 className="font-semibold text-slate-800 mb-2">
+                    Available on all platforms
+                  </h4>
                   <p className="text-sm text-slate-600">
-                    Compatible with iOS 12+ and Android 6.0+. Stay connected to your business wherever you are.
+                    Compatible with iOS 12+ and Android 6.0+. Stay connected to
+                    your business wherever you are.
                   </p>
                 </div>
               </div>
