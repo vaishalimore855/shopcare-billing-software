@@ -16,7 +16,7 @@ import {
   Loader2,
 } from "lucide-react";
 
-import { fetchMockData } from "@/app/data/mockApi";
+import { fetchMockData } from "@/public/data/mockApi";
 import { Feature } from "@/app/types/features";
 
 // ⭐ UPDATED Card (same styling used in SpecialFeatures)

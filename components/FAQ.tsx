@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
-import { fetchMockData } from "@/app/data/mockApi"; // Assuming path to mockapi
+import { fetchMockData } from "@/public/data/mockApi"; // Assuming path to mockapi
 import { FAQItem } from "@/app/types/faq"; // Assuming path to types
 
 export default function FAQ() {

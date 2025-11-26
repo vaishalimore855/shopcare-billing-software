@@ -10,7 +10,7 @@ import { X, PhoneCall } from "lucide-react";
 // import { postLead } from "@/services/service-api/postLeadService"
 // import { postLeadLocal } from "@/services/service-api/postLeadLocalService"
 // import type { getContactInfo } from "@/services/service-api/getContactInfoService"
-import { MOCK_CONTACT } from "@/app/data/mockApi";
+import { MOCK_CONTACT } from "@/public/data/mockApi";
 
 const hearAboutOptions = [
   "Google Search",

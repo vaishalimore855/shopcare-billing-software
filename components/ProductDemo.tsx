@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMockData } from "@/app/data/mockApi";
+import { fetchMockData } from "@/public/data/mockApi";
 import Card from "./common/Card";
 
 interface Video {

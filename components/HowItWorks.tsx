@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMockData } from "@/app/data/mockApi"; // Your mock API
+import { fetchMockData } from "@/public/data/mockApi"; // Your mock API
 import { Feature } from "@/app/types/features";
 import {
   FileText,

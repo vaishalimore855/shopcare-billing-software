@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Star, Quote, Loader2 } from "lucide-react";
 import { Testimonial } from "@/app/types/testimonials";
-import { fetchMockData } from "@/app/data/mockApi";
+import { fetchMockData } from "@/public/data/mockApi";
 import Card from "./common/Card";
 
 // Swiper
