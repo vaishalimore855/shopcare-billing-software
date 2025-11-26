@@ -10,7 +10,9 @@ export default function Newsletter() {
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleNewsletterSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
     setIsSubmitting(true);
 

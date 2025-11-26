@@ -3,13 +3,12 @@
 
 // // Mock Data
 // const MOCK_FEATURES: Feature[] = [
-//   // --- SPECIAL FEATURES (for your SpecialFeatures.tsx page)
 //   {
 //     title: "Outstanding View of all Customers & Supplier in single interface",
 //     description:
 //       "The software provides a unified interface to view all outstanding balances for customers & suppliers, making it easy to manage receivables and payables efficiently.",
 //     category: "special",
-//     icon: "Users", // Closest match for the icon in the image (multiple people/user icon)
+//     icon: "Users",
 //     order: 1,
 //   },
 //   {
@@ -25,59 +24,8 @@
 //       "Offers detailed stock statements with valuation & supplier-wise breakdowns, allowing businesses to monitor inventory levels & assess stock value effectively.",
 //     category: "special",
 //     icon: "Users",
-//     order: 1,
+//     order: 3,
 //   },
-
-//   // {
-//   //   title: "Outstanding View of all Customers & Supplier in single interface",
-//   //   description:
-//   //     "The software provides a unified interface to view all outstanding balances for customers & suppliers, making it easy to manage receivables and payables efficiently.",
-//   //   category: "special",
-//   //   icon: "Users", // Closest match for the icon in the image (multiple people/user icon)
-//   //   order: 1,
-//   // },
-//   // {
-//   //   title: "Stock Statement with Valuation & Supplier-wise Stock Statement",
-//   //   description:
-//   //     "Offers detailed stock statements with valuation & supplier-wise breakdowns, allowing businesses to monitor inventory levels & assess stock value effectively.",
-//   //   category: "special",
-//   //   icon: "Package", // Closest match for the icon in the image (stack of items/box icon)
-//   //   order: 2,
-//   // },
-//   // {
-//   //   title: "SMS Module (SMS for Bill, Ledger Recovery, Festival)",
-//   //   description:
-//   //     "The SMS module automates notifications for bills, ledger recovery, and festivals, enhancing communication and customer engagement.",
-//   //   category: "special",
-//   //   icon: "MessageSquare", // Closest match for the icon in the image (speech bubble with 'P' or message icon)
-//   //   order: 3,
-//   // },
-//   // {
-//   //   title: "Firm Separation of Sales Invoice for GST Bill & Non-GST Bill",
-//   //   description:
-//   //     "The software ensures clear differentiation between GST and Non-GST sales invoices, simplifying compliance and financial tracking.",
-//   //   category: "special",
-//   //   icon: "ShieldCheck", // Closest match for the icon in the image (shield icon)
-//   //   order: 4,
-//   // },
-//   // {
-//   //   title: "Profit and Loss by Bill, by Date & Itemwise for Every bill",
-//   //   description:
-//   //     "The software offers detailed profit and loss analysis by bill, date, and item, providing precise insights into financial performance for every transaction.",
-//   //   category: "special",
-//   //   icon: "TrendingUp", // Closest match for the icon in the image (upward trend line/chart icon)
-//   //   order: 5,
-//   // },
-//   // {
-//   //   title: "Auto Back Up to Customer's Email Account",
-//   //   description:
-//   //     "The software automatically backs up critical data to the customer's email account, ensuring secure and accessible data storage.",
-//   //   category: "special",
-//   //   icon: "Mail", // Closest match for the icon in the image (envelope/email icon)
-//   //   order: 6,
-//   // },
-
-//   // --- MAIN FEATURES
 //   {
 //     title: "POS (Point of sales system with Inventory & Barcode)",
 //     description:
@@ -93,17 +41,12 @@
 //     icon: "FileText",
 //     order: 2,
 //   },
-
-//   // --- BENEFITS
 //   {
 //     title: "Very easy purchase, sale & return facility",
 //     description: "Simplified purchase, sale, and return handling.",
 //     category: "benefit",
 //     icon: "RefreshCw",
 //   },
-
-//   // --- WORKFLOW
-//   // Workflow Items
 //   {
 //     title: "Quotation - GST, Non-GST Formats",
 //     description:
@@ -137,7 +80,7 @@
 //     business_name: "Shivneri Hardware",
 //     review: "Shopcare transformed our inventory & billing experience!",
 //     rating: 5,
-//     image_url: "/images/rajesh-kumar.jpg",
+//     image_url: "https://randomuser.me/api/portraits/women/44.jpg",
 //   },
 //   {
 //     customer_name: "Alice Johnson",
@@ -167,23 +110,148 @@
 //   },
 // ];
 
-// /* Generic Mock Fetch Function */
-// export const fetchMockData = <T extends "features" | "testimonials">(
+// interface Video {
+//   id: string;
+//   title: string;
+//   description: string;
+// }
+
+// const MOCK_VIDEOS: Video[] = [
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Shopcare Billing Demo",
+//     description: "Complete walkthrough of Shopcare billing software.",
+//   },
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Shopcare POS Demo",
+//     description: "See how Shopcare POS works seamlessly.",
+//   },
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Advanced Features",
+//     description: "Advanced features of Shopcare for businesses.",
+//   },
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Shopcare Billing Demo",
+//     description: "Complete walkthrough of Shopcare billing software.",
+//   },
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Shopcare POS Demo",
+//     description: "See how Shopcare POS works seamlessly.",
+//   },
+//   {
+//     id: "b-vLaye6f_I",
+//     title: "Advanced Features",
+//     description: "Advanced features of Shopcare for businesses.",
+//   },
+// ];
+
+// // Generic Mock Fetch Function
+// export const fetchMockData = <T extends "features" | "testimonials" | "videos">(
 //   endpoint: T
-// ): Promise<T extends "features" ? Feature[] : Testimonial[]> => {
+// ): Promise<
+//   T extends "features"
+//     ? Feature[]
+//     : T extends "testimonials"
+//     ? Testimonial[]
+//     : Video[]
+// > => {
 //   return new Promise((resolve) => {
 //     setTimeout(() => {
 //       if (endpoint === "features") resolve(MOCK_FEATURES as any);
-//       else resolve(MOCK_TESTIMONIALS as any);
+//       else if (endpoint === "testimonials") resolve(MOCK_TESTIMONIALS as any);
+//       else resolve(MOCK_VIDEOS as any);
 //     }, 500);
 //   });
 // };
 
-// export { MOCK_FEATURES, MOCK_TESTIMONIALS };
+// export { MOCK_FEATURES, MOCK_TESTIMONIALS, MOCK_VIDEOS };
+
+// IMPORT TYPES
 import { Feature } from "@/app/types/features";
 import { Testimonial } from "@/app/types/testimonials";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { contactdata } from "@/app/types/contactdata";
+import { FAQItem } from "@/app/types/faq"; // Added FAQItem import
 
-// Mock Data
+// ----------------------------
+// MOCK FAQ DATA (NEW - moved up for clarity)
+// ----------------------------
+const MOCK_FAQS: FAQItem[] = [
+  {
+    question: "What is Shopcare Billing Software?",
+    answer:
+      "Shopcare is a comprehensive POS (Point of Sale) billing software designed for retail businesses. It offers GST-compliant billing, inventory management, barcode support, and detailed business reports - all in one easy-to-use platform.",
+  },
+  {
+    question: "Is Shopcare GST compliant?",
+    answer:
+      "Yes, Shopcare is 100% GST compliant. It automatically calculates GST for all transactions, generates GST-ready invoices, and provides reports that help you file your GST returns easily.",
+  },
+  {
+    question: "Can I use Shopcare on multiple devices?",
+    answer:
+      "Absolutely! Shopcare supports multi-device usage. You can access your business data from desktop computers, laptops, and even mobile devices, keeping your business connected at all times.",
+  },
+  {
+    question: "Do you provide customer support?",
+    answer:
+      "Yes, we provide 24/7 customer support. Our dedicated team is always ready to assist you with any queries, technical issues, or training needs. We also offer video tutorials and documentation.",
+  },
+  {
+    question: "How secure is my business data?",
+    answer:
+      "Your data security is our top priority. Shopcare uses advanced encryption, regular backups, and secure cloud storage to ensure your business data is always protected and accessible.",
+  },
+  {
+    question: "Can I try Shopcare before purchasing?",
+    answer:
+      "Yes! We offer a free demo so you can explore all features before making a decision. Contact our sales team to schedule a personalized demo for your business.",
+  },
+];
+
+// ----------------------------
+// CONTACT US DATA (EXISTING)
+// ----------------------------
+export const MOCK_CONTACT: contactdata[] = [
+  {
+    Id: 1,
+    Title: "Phone",
+    Icon: Phone,
+    Details1: "+91 7798798679",
+    Details2: "Mon–Fri 9AM–6PM",
+  },
+  {
+    Id: 2,
+    Title: "Email",
+    Icon: Mail,
+    Details1: "soulsoftinfotech@gmail.com",
+    Details2: "We respond within 2 hours",
+  },
+  {
+    Id: 3,
+    Title: "Support Hours",
+    Icon: Clock,
+    Details1: "24/7 Online Support",
+    Details2: "Mon–Fri 9AM–6PM",
+  },
+  {
+    Id: 4,
+    Title: "Office",
+    Icon: MapPin,
+    Details1: JSON.stringify([
+      "S 10-B, 2nd Floor, Top-Ten Imperial, Sangamner, 422605, A.Nagar",
+      "1003, A4, Aishwaryam Hamara, Dehu Alandi Road, Moshi Pune, 411062",
+      "Satpur, Behind Jogging Track, Near D-Mart & Reliance Petrol Pump, Nashik, 422007",
+    ]),
+    Details2: "",
+  },
+];
+
+// ... (MOCK_FEATURES, MOCK_TESTIMONIALS, MOCK_VIDEOS remain the same) ...
 const MOCK_FEATURES: Feature[] = [
   {
     title: "Outstanding View of all Customers & Supplier in single interface",
@@ -331,23 +399,41 @@ const MOCK_VIDEOS: Video[] = [
   },
 ];
 
-// Generic Mock Fetch Function
-export const fetchMockData = <T extends "features" | "testimonials" | "videos">(
+// ----------------------------
+// GENERIC FETCH FUNCTION (CORRECTED)
+// ----------------------------
+export const fetchMockData = <
+  T extends "features" | "testimonials" | "videos" | "contact" | "faqs" // Added "faqs" here
+>(
   endpoint: T
 ): Promise<
   T extends "features"
     ? Feature[]
     : T extends "testimonials"
     ? Testimonial[]
-    : Video[]
+    : T extends "contact"
+    ? typeof MOCK_CONTACT
+    : T extends "faqs" // Added conditional check for "faqs"
+    ? FAQItem[] // Return type for "faqs"
+    : Video[] // Default return type
 > => {
   return new Promise((resolve) => {
     setTimeout(() => {
       if (endpoint === "features") resolve(MOCK_FEATURES as any);
       else if (endpoint === "testimonials") resolve(MOCK_TESTIMONIALS as any);
+      else if (endpoint === "contact") resolve(MOCK_CONTACT as any);
+      else if (endpoint === "faqs")
+        resolve(MOCK_FAQS as any); // Added data resolution for "faqs"
       else resolve(MOCK_VIDEOS as any);
     }, 500);
   });
 };
 
-export { MOCK_FEATURES, MOCK_TESTIMONIALS, MOCK_VIDEOS };
+// EXPORT ALL MOCKS (EXISTING EXPORTS)
+export {
+  MOCK_FEATURES,
+  MOCK_TESTIMONIALS,
+  MOCK_VIDEOS,
+  MOCK_CONTACT,
+  MOCK_FAQS,
+};

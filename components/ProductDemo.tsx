@@ -53,19 +53,29 @@ export default function ProductDemo() {
   const loopVideos = [...videos, ...videos];
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    // <section className="py-24 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <section className="py-15 pb-5 px-6 bg-gradient-to-br from-blue-50 shadow-lg via-white to-cyan-50">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-10"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold mb-3">
+            {/* <span className="text-slate-900">Our </span> */}
+            <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
               Product Demo
             </span>
           </h2>
-          <p className="text-xl text-slate-600">
+
+          <p className="text-lg text-slate-600">
             A sophisticated and easy-to-use billing software for every business!
           </p>
-        </div>
+        </motion.div>
 
         {/* Carousel */}
         {isLoading ? (
@@ -95,7 +105,9 @@ export default function ProductDemo() {
                         src={thumbnailUrl}
                         alt={video.title}
                         className="w-full h-full object-cover rounded-3xl"
+                        // priority
                       />
+
                       <div className="absolute inset-0 bg-black/25 rounded-3xl" />
                       <motion.button
                         onClick={() => setActiveVideo(video)}
@@ -129,7 +141,7 @@ export default function ProductDemo() {
             </div>
 
             {/* Dots Navigation */}
-            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-3">
+            {/* <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-3">
               {videos.map((_, i) => (
                 <span
                   key={i}
@@ -138,6 +150,21 @@ export default function ProductDemo() {
                   }`}
                 />
               ))}
+            </div> */}
+            {/* Dots Navigation (Fixed) */}
+            <div className="flex justify-center mt-5 py-10">
+              <div className="flex gap-3">
+                {videos.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`w-2 h-2  rounded-full transition-all ${
+                      i === activeIndex
+                        ? "bg-blue-600 scale-125"
+                        : "bg-slate-300"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         )}

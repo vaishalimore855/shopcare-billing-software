@@ -1,12 +1,11 @@
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ShoppingCart, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/common/button";
-
+import Image from "next/image";
+import shopcare_logo from "@/public/images/shopcare_logo.jpg";
 interface NavLink {
   name: string;
   href: string;
@@ -33,6 +32,7 @@ export default function Navigation() {
     { name: "Demo", href: "#demo" },
     // { name: "App", href: "#app" },
     { name: "Reviews", href: "#reviews" },
+    { name: "FAQ", href: "#faq" },
   ];
 
   // Smooth scroll function
@@ -73,15 +73,17 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center cursor-pointer"
           >
-           
-            <img
-              src="https://soulsoft.in/wp-content/uploads/2022/01/logo.png"
+            {/* <img
+              src={shopcare_logo}
               alt="Shopcare Logo"
               className="w-48 h-auto bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent"
+            /> */}
+            <Image
+              src={shopcare_logo}
+              alt="Shopcare Logo"
+              className="w-30 h-18 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent"
+              priority
             />
-            
-           
-
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -109,10 +111,15 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="hidden md:block"
           >
-            <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
-              Purchase Now
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <a
+              href="#contact" // <<< Target the new Contact ID
+              onClick={(e) => scrollToSection(e, "#contact")}
+            >
+              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
+                Purchase Now
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -120,7 +127,11 @@ export default function Navigation() {
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors text-black"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-black" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6 text-black" />
+            )}
           </button>
         </div>
 
@@ -144,13 +155,15 @@ export default function Navigation() {
             ))}
 
             <div className="pt-2">
-              {/* <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl">
-                Purchase Now
-              </Button> */}
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
-              Purchase Now
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+              <a
+                href="#contact" // <<< Target the new Contact ID
+                onClick={(e) => scrollToSection(e, "#contact")}
+              >
+                <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
+                  Purchase Now
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
