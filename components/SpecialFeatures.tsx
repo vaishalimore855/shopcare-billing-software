@@ -157,11 +157,10 @@
 //     </section>
 //   );
 // }
-
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchMockData } from "@/public/data/mockApi";
@@ -205,25 +204,19 @@ const gradientPalette = [
   "from-orange-500 to-red-400",
 ];
 
-// Animation Variants
-const containerVariants = {
+// Container animation variants
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
-// Card Variants — ✅ Type-safe easing
-const cardVariants = {
+// Card animation variants — TypeScript-safe
+const cardVariants: any = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.42, 0, 0.58, 1], // cubic-bezier for easeInOut
-    },
+    transition: { duration: 0.6, ease: "easeInOut" }, // ✔ works in TS
   },
 };
 
@@ -258,6 +251,7 @@ const Card = ({
   </motion.div>
 );
 
+// Main Component
 export default function SpecialFeatures() {
   const { data: allFeatures = [], isLoading } = useQuery<Feature[]>({
     queryKey: ["features"],
@@ -269,6 +263,7 @@ export default function SpecialFeatures() {
   return (
     <section className="py-12 lg:py-16 px-6 bg-white relative">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -282,12 +277,12 @@ export default function SpecialFeatures() {
               Special Features
             </span>
           </h2>
-
           <p className="text-lg text-slate-600">
             Advanced capabilities that set us apart from the competition.
           </p>
         </motion.div>
 
+        {/* Features Grid */}
         {isLoading ? (
           <div className="flex justify-center items-center h-48">
             <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
@@ -301,7 +296,11 @@ export default function SpecialFeatures() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {features.map((feature, index) => {
-              const IconComponent = IconMap[feature.icon] || Users;
+              const IconComponent =
+                feature.icon && IconMap[feature.icon]
+                  ? IconMap[feature.icon]
+                  : Users;
+
               const gradient = gradientPalette[index % gradientPalette.length];
 
               return (
