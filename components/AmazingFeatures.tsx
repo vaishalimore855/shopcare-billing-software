@@ -178,8 +178,12 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+
+import { fetchMockData } from "@/public/data/mockApi";
+import { Feature } from "@/app/types/features";
 
 import {
   ShoppingCart,
@@ -194,10 +198,47 @@ import {
   Loader2,
 } from "lucide-react";
 
-import { fetchMockData } from "@/public/data/mockApi";
-import { Feature } from "@/app/types/features";
+// ⭐ Icon Mapping (Amazing Feature Icons)
+const IconMap: Record<string, LucideIcon> = {
+  ShoppingCart,
+  FileText,
+  BarChart2,
+  Users,
+  Mail,
+  RefreshCw,
+  Package,
+  ShoppingBag,
+};
 
-// ⭐ Card Component
+// ⭐ Gradient Palette (same as SpecialFeatures)
+const gradientPalette = [
+  "from-blue-500 to-cyan-400",
+  "from-purple-500 to-pink-400",
+  "from-orange-500 to-red-400",
+];
+
+// ⭐ Animation Variants (same as SpecialFeatures)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.6, -0.05, 0.01, 0.99] as any, // FIXED (Netlify-safe)
+    },
+  },
+};
+
+// ⭐ SAME CARD COMPONENT AS SPECIAL FEATURES
 const Card = ({
   icon: Icon,
   title,
@@ -228,80 +269,22 @@ const Card = ({
   </motion.div>
 );
 
-// Icon Map
-const IconMap: { [key: string]: LucideIcon } = {
-  ShoppingCart,
-  FileText,
-  BarChart2,
-  Users,
-  Mail,
-  RefreshCw,
-  Package,
-  ShoppingBag,
-};
-
-// Gradient Palette
-const gradientPalette = [
-  "from-blue-500 to-cyan-400",
-  "from-purple-500 to-pink-400",
-  "from-orange-500 to-red-400",
-];
-
-// Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-// ⭐ FIXED ONLY THIS — NOTHING ELSE CHANGED
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }, // TS-safe easing
-  },
-};
-
+// ⭐ FINAL AMAZING FEATURES COMPONENT
 export default function AmazingFeatures() {
-  const [features, setFeatures] = useState<Feature[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: allFeatures = [], isLoading } = useQuery<Feature[]>({
+    queryKey: ["amazing-features"],
+    queryFn: () => fetchMockData("features"),
+  });
 
-  // Fetch Data
-  useEffect(() => {
-    const loadFeatures = async () => {
-      try {
-        const allFeatures = await fetchMockData("features");
-
-        const displayed = allFeatures
-          .filter((f) => f.category === "main" || f.category === "benefit")
-          .slice(0, 3);
-
-        setFeatures(displayed);
-      } catch (err) {
-        console.error("Failed to fetch features:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadFeatures();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <section className="py-12 lg:py-16 px-6 bg-white flex justify-center items-center h-48">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-      </section>
-    );
-  }
+  // ✔ Only category changes (main + benefit)
+  const features = allFeatures.filter(
+    (f) => f.category === "main" || f.category === "benefit"
+  );
 
   return (
     <section className="py-12 lg:py-16 px-6 bg-white relative">
       <div className="max-w-7xl mx-auto">
+        {/* HEADER — SAME AS SPECIAL FEATURES */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
