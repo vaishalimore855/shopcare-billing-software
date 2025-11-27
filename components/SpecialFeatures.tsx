@@ -215,6 +215,17 @@ const containerVariants = {
 };
 
 // ❗ FIXED TypeScript Error — replaced string ease with cubic-bezier easing array
+// const cardVariants = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.6,
+//       ease: [0.42, 0, 0.58, 1], // ✔ Valid easing (easeInOut curve)
+//     },
+//   },
+// };
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -222,7 +233,7 @@ const cardVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.42, 0, 0.58, 1], // ✔ Valid easing (easeInOut curve)
+      ease: "easeInOut", // ✔ Type-safe
     },
   },
 };
