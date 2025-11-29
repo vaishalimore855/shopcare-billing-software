@@ -211,16 +211,24 @@ const containerVariants: Variants = {
 };
 
 // Card animation variants — TypeScript-safe
-const cardVariants: any = {
+// const cardVariants: any = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.6, ease: "easeInOut" }, // ✔ works in TS
+//   },
+// };
+
+// Card Component
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeInOut" }, // ✔ works in TS
+    transition: { duration: 0.6, ease: "easeInOut" },
   },
 };
-
-// Card Component
 const Card = ({
   icon: Icon,
   title,

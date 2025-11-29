@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMockData } from "@/public/data/mockApi"; // Your mock API
@@ -27,11 +27,32 @@ const images: string[] = [
 ];
 
 export default function HowItWorks() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { data: allFeatures = [], isLoading } = useQuery<Feature[]>({
     queryKey: ["workflow"],
     queryFn: () => fetchMockData("features"),
   });
+  // Smooth scroll function
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
 
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // Adjust for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      setMobileMenuOpen(false);
+    }
+  };
   const workflows: Feature[] = allFeatures
     .filter((f) => f.category === "workflow")
     .sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -157,14 +178,18 @@ export default function HowItWorks() {
                             <p className="text-base text-slate-600 flex-grow leading-relaxed line-clamp-4">
                               {workflow.description}
                             </p>
-
-                            <motion.button
-                              whileHover={{ x: 10 }}
-                              className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-300 rounded-lg text-cyan-600 font-semibold text-sm group hover:bg-cyan-100 transition-all"
+                            <a
+                              href="#contact" // <<< Target the new Contact ID
+                              onClick={(e) => scrollToSection(e, "#contact")}
                             >
-                              Learn more
-                              <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                            </motion.button>
+                              <motion.button
+                                whileHover={{ x: 10 }}
+                                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-300 rounded-lg text-cyan-600 font-semibold text-sm group hover:bg-cyan-100 transition-all"
+                              >
+                                Learn more
+                                <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                              </motion.button>
+                            </a>
 
                             {/* Corner Decoration */}
                             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-100/50 to-transparent rounded-bl-full" />
@@ -216,7 +241,7 @@ export default function HowItWorks() {
                             />
                           </div>
 
-                          {/* Floating Badge */}
+                          {/* Floating Badge
                           <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +254,7 @@ export default function HowItWorks() {
                             <p className="text-white font-semibold text-sm">
                               Step {index + 1}
                             </p>
-                          </motion.div>
+                          </motion.div> */}
                         </div>
                       </motion.div>
                     </div>

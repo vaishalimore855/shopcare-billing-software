@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Star, Quote, Loader2 } from "lucide-react";
@@ -15,11 +15,32 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function CustomerReviews() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { data: testimonials = [], isLoading } = useQuery<Testimonial[]>({
     queryKey: ["testimonials"],
     queryFn: () => fetchMockData("testimonials"),
   });
+  // Smooth scroll function
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
 
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // Adjust for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      setMobileMenuOpen(false);
+    }
+  };
   return (
     <section className="py-20 px-6 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
       <div className="max-w-7xl mx-auto">
@@ -65,7 +86,7 @@ export default function CustomerReviews() {
               <SwiperSlide key={index} className="pb-10">
                 <Card gradient="from-blue-500 to-cyan-400" delay={index * 0.1}>
                   {/* Quote Icon */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center opacity-50">
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center opacity-50">
                     <Quote className="w-10 h-10 text-blue-600" />
                   </div>
 
@@ -143,14 +164,18 @@ export default function CustomerReviews() {
                 Join 1500+ satisfied customers and transform your business
                 operations today
               </p>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all"
+              <a
+                href="#contact" // <<< Target the new Contact ID
+                onClick={(e) => scrollToSection(e, "#contact")}
               >
-                Purchase Now
-              </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all"
+                >
+                  Contact Us
+                </motion.button>
+              </a>
             </div>
           </div>
         </motion.div>

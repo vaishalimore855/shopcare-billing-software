@@ -43,7 +43,7 @@ export default function Home() {
         <ProductDemo />
       </div>
 
-      <div id="app">{/* <AppScreenshots /> */}</div>
+      {/* <div id="app"><AppScreenshots /></div> */}
 
       <div id="reviews">
         <CustomerReviews />

@@ -12,9 +12,19 @@ import {
   Loader2,
   CheckCircle,
 } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+
 import { fetchBenefits } from "@/app/services/benefitService";
 
-const iconMap: Record<string, any> = {
+// const iconMap: Record<string, any> = {
+//   RefreshCw,
+//   DollarSign,
+//   FileCheck,
+//   Printer,
+//   History,
+// };
+
+const iconMap: Record<string, LucideIcon> = {
   RefreshCw,
   DollarSign,
   FileCheck,

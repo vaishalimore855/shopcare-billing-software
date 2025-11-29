@@ -482,16 +482,16 @@ export const MOCK_VIDEOS: Video[] = [
     title: "Shopcare Billing Demo",
     description: "Complete walkthrough of Shopcare billing software.",
   },
-  {
-    id: "b-vLaye6f_I",
-    title: "Shopcare POS Demo",
-    description: "See how Shopcare POS works seamlessly.",
-  },
-  {
-    id: "b-vLaye6f_I",
-    title: "Advanced Features",
-    description: "Advanced features of Shopcare for businesses.",
-  },
+  // {
+  //   id: "b-vLaye6f_I",
+  //   title: "Shopcare POS Demo",
+  //   description: "See how Shopcare POS works seamlessly.",
+  // },
+  // {
+  //   id: "b-vLaye6f_I",
+  //   title: "Advanced Features",
+  //   description: "Advanced features of Shopcare for businesses.",
+  // },
 ];
 
 // ----------------------------

@@ -116,7 +116,7 @@ export default function Navigation() {
               onClick={(e) => scrollToSection(e, "#contact")}
             >
               <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
-                Purchase Now
+                Contact Us
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
@@ -156,11 +156,11 @@ export default function Navigation() {
 
             <div className="pt-2">
               <a
-                href="#contact" // <<< Target the new Contact ID
+                href="#contact"
                 onClick={(e) => scrollToSection(e, "#contact")}
               >
                 <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all px-1 py-3 text-base">
-                  Purchase Now
+                  Contact Us
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </a>

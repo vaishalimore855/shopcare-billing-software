@@ -28,7 +28,7 @@ interface StatItem {
 
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(
@@ -39,6 +39,27 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // Smooth scroll function
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // Adjust for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      setMobileMenuOpen(false);
+    }
+  };
   const stats: StatItem[] = [
     { icon: Users, label: "1500+ Customers", value: "1500+" },
     { icon: TrendingUp, label: "Since 2012", value: "12+" },
@@ -152,10 +173,12 @@ export default function HeroSection() {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4 mb-8"
             >
-              <Button className="h-12 px-6 border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 rounded-xl text-base font-semibold">
-                <Play className="mr-2 w-4 h-4" />
-                Watch Demo
-              </Button>
+              <a href="#demo" onClick={(e) => scrollToSection(e, "#demo")}>
+                <Button className="h-12 px-6 border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 rounded-xl text-base font-semibold">
+                  <Play className="mr-2 w-4 h-4" />
+                  Watch Demo
+                </Button>
+              </a>
             </motion.div>
 
             {/* Stats */}
