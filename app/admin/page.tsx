@@ -11,19 +11,14 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<"leads" | "subscribers">("leads");
 
   // ------------------- LOGIN UI -------------------
-  // if (!auth) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center bg-slate-100">
-  //       <LoginForm />
-  //     </div>
-  //   );
-  // }
+  if (!auth) {
+    return (
+      <div>
+        <LoginForm />
+      </div>
+    );
+  }
 
-  // return (
-  //   <>
-  //     <LoginForm />
-  //   </>
-  // );
   // ------------------- DASHBOARD UI -------------------
   return (
     <div className="min-h-screen bg-gray-100 p-3">

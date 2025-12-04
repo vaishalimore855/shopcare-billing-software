@@ -85,49 +85,55 @@ export default function CustomerReviews() {
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index} className="pb-10">
                 <Card gradient="from-blue-500 to-cyan-400" delay={index * 0.1}>
-                  {/* Quote Icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center opacity-50">
-                    <Quote className="w-10 h-10 text-blue-600" />
-                  </div>
-
-                  {/* Stars */}
-                  <div className="flex items-center space-x-1 mb-4 mt-2">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-5 h-5 text-yellow-400"
-                        fill="currentColor"
-                      />
-                    ))}
-                  </div>
-
-                  {/* Review */}
-                  <p className="text-slate-700 leading-relaxed mb-6 text-lg relative z-10">
-                    {testimonial.review}
-                  </p>
-
-                  {/* Customer Info */}
-                  <div className="flex items-center space-x-4 pt-6 border-t border-slate-200">
-                    <div className="w-14 h-14 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center shadow-lg">
-                      {testimonial.image_url ? (
-                        <img
-                          src={testimonial.image_url}
-                          alt={testimonial.customer_name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <span className="text-white font-bold text-xl">
-                          {testimonial.customer_name[0]}
-                        </span>
-                      )}
+                  {/* Fixed height container */}
+                  <div className="flex flex-col h-[240px]">
+                    {/* Quote Icon */}
+                    <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center opacity-50">
+                      <Quote className="w-10 h-10 text-blue-600" />
                     </div>
-                    <div>
-                      <p className="font-bold text-slate-900">
-                        {testimonial.customer_name}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        {testimonial.business_name}
-                      </p>
+
+                    {/* Stars */}
+                    <div className="flex items-center space-x-1 mb-3 mt-2">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 text-yellow-400"
+                          fill="currentColor"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Business Name */}
+                    <h3 className="text-lg font-bold text-slate-900 mb-4 line-clamp-2 relative z-10">
+                      {testimonial.business_name}
+                    </h3>
+
+                    {/* Customer Info */}
+                    <div className="flex items-center space-x-4 pt-4 border-t border-slate-200 mt-auto">
+                      <div className="w-14 h-14 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center shadow-lg flex-shrink-0">
+                        {testimonial.image_url ? (
+                          <img
+                            src={testimonial.image_url}
+                            alt={testimonial.customer_name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <span className="text-white font-bold text-xl">
+                            {testimonial.customer_name[0]}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-slate-900 truncate">
+                          {testimonial.customer_name}
+                        </p>
+                        <p className="text-sm text-slate-600 line-clamp-2">
+                          {testimonial.address}
+                        </p>
+                        <p className="text-sm text-blue-600 font-medium mt-1">
+                          {testimonial.contact_no}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </Card>

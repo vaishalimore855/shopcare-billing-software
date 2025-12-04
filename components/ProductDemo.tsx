@@ -225,9 +225,9 @@ export default function ProductDemo() {
     "Easy-to-use interface for quick billing",
     "Real-time inventory tracking",
     "Comprehensive sales reports and analytics",
-    "Multi-store management capabilities",
+
     "GST compliant invoicing",
-    "Customer management and loyalty programs",
+    "Customer management ",
   ];
 
   return (

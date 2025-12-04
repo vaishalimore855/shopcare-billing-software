@@ -428,48 +428,93 @@ export const MOCK_FEATURES: Feature[] = [
   },
 ];
 
-// ----------------------------
-// MOCK TESTIMONIALS
-// ----------------------------
 export const MOCK_TESTIMONIALS: Testimonial[] = [
   {
-    customer_name: "Rajesh Kumar",
-    business_name: "Shivneri Hardware",
-    review: "Shopcare transformed our inventory & billing experience!",
+    customer_name: "Santosh",
+    business_name: "Santosh Automobiles",
+    // review:
+    //   "Shopcare has transformed how we manage our auto parts inventory. Billing is incredibly fast and we always stay on top of stock levels!",
     rating: 5,
-    image_url: "https://randomuser.me/api/portraits/women/44.jpg",
+    image_url:
+      "https://ui-avatars.com/api/?name=Santosh&background=4F46E5&color=fff&size=200",
+    address: "45, Esteem Park, Takili Phata, Dwarka, Nashik",
+    contact_no: "9422271072",
   },
   {
-    customer_name: "Alice Johnson",
-    business_name: "Tech Solutions",
-    review: "Shopcare transformed our business operations!",
+    customer_name: "Rajendra Borde",
+    business_name: "Borde Hardware and Electronics",
+    // review:
+    //   "Managing both hardware and electronics was challenging before Shopcare. Now our inventory is perfectly organized and billing is effortless!",
     rating: 5,
-    image_url: "https://randomuser.me/api/portraits/women/44.jpg",
+    image_url:
+      "https://ui-avatars.com/api/?name=Rajendra+Borde&background=7C3AED&color=fff&size=200",
+    address:
+      "Lakshsing Road, Nearby Dudhad Branch Post Office, Tal. Dudhad, Dist. Chhatrapati Sambhaji Nagar",
+    contact_no: "9604907698",
   },
   {
-    customer_name: "Bob Smith",
-    business_name: "Retail Co.",
-    review: "Easy to use and highly efficient billing software.",
+    customer_name: "Shreenath Jadhav",
+    business_name: "Shreenath Sanitary Ware Machinery & Electrical",
+    // review:
+    //   "The GST billing system is outstanding! Shopcare handles our diverse product range with ease and accuracy.",
+    rating: 5,
+    image_url:
+      "https://ui-avatars.com/api/?name=Shreenath+Jadhav&background=2563EB&color=fff&size=200",
+    address: "Old Court, Pusad Road, Umarkhed, Dist. Yavatmal",
+    contact_no: "9850863211",
+  },
+  {
+    customer_name: "Nilesh",
+    business_name: "Nilesh Hardware",
+    // review:
+    // "Simple, efficient, and reliable! Shopcare has everything we need to run our hardware store smoothly every day.",
+    rating: 5,
+    image_url:
+      "https://ui-avatars.com/api/?name=Nilesh&background=DC2626&color=fff&size=200",
+    address: "Sakuri, Tal - Rahata, Dist - Ahilyanagar, 423107",
+    contact_no: "9011117474",
+  },
+  {
+    customer_name: "Saptashrungi",
+    business_name: "Saptashrungi Mudranalaya & Stationery",
+    // review:
+    // "Perfect solution for our stationery shop! The quick billing and inventory tracking features save us so much time daily.",
+    rating: 5,
+    image_url:
+      "https://ui-avatars.com/api/?name=Saptashrungi&background=EA580C&color=fff&size=200",
+    address:
+      "Murli Shakuntal Complex, Gala No. 30, Near Central Bank of India, Nashik Road, Sangamner-422605, Dist. A'Nagar",
+    contact_no: "8446147269",
+  },
+  {
+    customer_name: "Krushidhan",
+    business_name: "Krushidhan Irrigation and Hardware",
+    // review:
+    // "Excellent for our agricultural hardware business! Managing hundreds of irrigation products is now incredibly simple with Shopcare.",
     rating: 4,
-    image_url: "https://randomuser.me/api/portraits/men/46.jpg",
+    image_url:
+      "https://ui-avatars.com/api/?name=Krushidhan&background=059669&color=fff&size=200",
+    address: "Chinoda Chofuli, Chinoda Road, Taloda, Dist. Nandurbar",
+    contact_no: "8830665838",
   },
   {
-    customer_name: "Clara Lee",
-    review: "Fantastic customer support and smooth integration.",
+    customer_name: "Trimurti",
+    business_name: "Trimurti Sales",
+    // review:
+    // "Outstanding software! The reporting features help us make better business decisions. Highly recommend Shopcare to all retailers.",
     rating: 5,
-  },
-  {
-    customer_name: "David Kim",
-    business_name: "Cafe Delight",
-    review: "We saved so much time using Shopcare every day!",
-    rating: 5,
-    image_url: "https://randomuser.me/api/portraits/men/55.jpg",
+    image_url:
+      "https://ui-avatars.com/api/?name=Trimurti&background=8B5CF6&color=fff&size=200",
+    address:
+      "Rayatewadi Phata, Nashik Pune Highway, Tal-Sangamner, Ahmednagar - 422605",
+    contact_no: "9657627356",
   },
 ];
 
 // ----------------------------
 // MOCK VIDEOS
 // ----------------------------
+
 export interface Video {
   id: string;
   title: string;
