@@ -58,6 +58,13 @@ export const RangeDatePicker: React.FC<NonFormikRangeDatepickerProps> = ({
 
   return (
     <div className={`form-group item ${formGroup} position-relative`}>
+      <label
+        htmlFor={inputId}
+        className={`form-label-trans form-label ${labelClass}`}
+        style={labelStyle}
+      >
+        {label}
+      </label>
       <RangePicker
         id={inputId}
         className={`form-input-trans form-control ${className} ${
@@ -83,13 +90,13 @@ export const RangeDatePicker: React.FC<NonFormikRangeDatepickerProps> = ({
         popupClassName="custom-date-picker-popup"
         {...rangePickerProps}
       />
-      <label
+      {/* <label
         htmlFor={inputId}
         className={`form-label-trans form-label ${labelClass}`}
         style={labelStyle}
       >
         {label}
-      </label>
+      </label> */}
       {showError && errorMessage && (
         <div className="invalid-feedback-message d-block">{errorMessage}</div>
       )}
